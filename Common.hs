@@ -54,3 +54,9 @@ diagonals = tail . go [] where
         []   -> transpose ts
         e:es -> go (e:ts) es
         where ts = [t | _:t <- b]
+
+-- te diagonale w drugiej dolnej połowie powinny być poprzedzone miejscami pustymi, tak, zeby było wyrównnie do oryginalnej szerokości 
+diagonals2 = map concat
+          . transpose
+          . zipWith (\ns xs -> ns ++ map (:[]) xs)
+                    (iterate ([]:) [])
