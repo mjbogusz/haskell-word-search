@@ -9,7 +9,7 @@ import Common
 import HorizontalSearch
 import VerticalSearch
 import DiagonalSearch
-import LetersLeft
+import LettersLeft
 
 main :: IO ()
 main = do
@@ -27,9 +27,9 @@ main = do
 
   -- merge flags
   let finalFlags = mor (mor newFlagsD1 newFlagsD2) (mor newFlagsH newFlagsV);
-  let letersleft = letersLeft (mapData p) finalFlags;
+  let lettersleft = lettersLeft (mapData p) finalFlags;
   -- print (mapData p);
   -- printFlags newFlagsD1;
-  printFlags newFlagsD2;
-  printFlags finalFlags;
-  print letersleft;
+  -- printFlags newFlagsD2;
+  -- printFlags finalFlags;
+  print lettersleft;
