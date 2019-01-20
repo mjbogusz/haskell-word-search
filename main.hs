@@ -1,10 +1,16 @@
 import System.Environment
+import Data.List
+-- import System.FilePath
 
 import Input
-import System.FilePath
+import Puzzle
+import Common
+import HorizontalSearch
 
 main :: IO ()
 main = do
-    args <- getArgs;
-    p <- readInputFile (head args);
-    print p;
+  args <- getArgs;
+  p <- readInputFile (head args);
+  let flags = prepareFlags (sizeX p) (sizeY p);
+  let newFlags = horizontalSearch (wordList p) (mapData p) flags;
+  print newFlags;

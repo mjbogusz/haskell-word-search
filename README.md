@@ -5,14 +5,17 @@
 
 ### Aeson
 Debian/Ubuntu:
-`sudo apt install libghc-aeson-dev`
+* `sudo apt install libghc-aeson-dev`
 
 Manual:
-`cabal update`
-`cabal install aeson`
+* `cabal update`
+* `cabal install aeson`
 
 ## Build
 `ghc --make main.hs`
 
 ## Running
-`./main`
+`./main <input json file>`
+
+e.g.
+`./main tests/puzzle1.json`
