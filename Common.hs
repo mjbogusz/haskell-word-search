@@ -39,3 +39,6 @@ rotateLeft = reverse . transpose
 
 rotateRight :: [[a]] -> [[a]]
 rotateRight = transpose . reverse
+
+mand :: [[Bool]] -> [[Bool]] -> [[Bool]]
+mand x y = zipWith (zipWith (&&)) x y
