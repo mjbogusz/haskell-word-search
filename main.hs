@@ -5,7 +5,10 @@ import Data.List
 import Input
 import Puzzle
 import Common
+
 import HorizontalSearch
+import VerticalSearch
+import DiagonalSearch
 import LetersLeft
 
 main :: IO ()
@@ -13,13 +16,20 @@ main = do
   args <- getArgs;
   p <- readInputFile (head args);
   let flags = prepareFlags (sizeX p) (sizeY p);
-  let newFlags = horizontalSearch (wordList p) (mapData p) flags;
---  print newFlags;
-  let newFlags2 = rotateRight (horizontalSearch (wordList p) (rotateLeft (mapData p)) (rotateLeft flags));
---  print newFlags2;
-  let newFlags4 = diagonals (horizontalSearch (wordList p) (diagonals2 (mapData p)) (diagonals2 flags));
-  print newFlags4;
-  let newFlags3 = mor newFlags newFlags2;
-  print newFlags3;
-  let letersleft = letersLeft (mapData p) newFlags3;
+  -- horizontal search
+  let newFlagsH = horizontalSearch (wordList p) (mapData p) flags;
+  -- vertical search
+  let newFlagsV = verticalSearch (wordList p) (mapData p) flags;
+
+  -- diagonal search (FIXME)
+  let newFlagsD1 = diagonalSearch (wordList p) (mapData p) (sizeX p) (sizeY p) flags;
+  let newFlagsD2 = diagonalSearch2 (wordList p) (mapData p) (sizeX p) (sizeY p) flags;
+
+  -- merge flags
+  let finalFlags = mor (mor newFlagsD1 newFlagsD2) (mor newFlagsH newFlagsV);
+  let letersleft = letersLeft (mapData p) finalFlags;
+  -- print (mapData p);
+  -- printFlags newFlagsD1;
+  printFlags newFlagsD2;
+  printFlags finalFlags;
   print letersleft;
