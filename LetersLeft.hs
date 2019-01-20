@@ -3,6 +3,7 @@ module LetersLeft where
 import Data.List
 
 letersLeft :: [String] -> [[Bool]] -> [String]
+letersLeft [] [] = []
 letersLeft (mapline:map) (flagsline:flags) = [letersLeftLine mapline flagsline] ++ (letersLeft map flags)
 
 letersLeftLine :: String -> [Bool] -> String

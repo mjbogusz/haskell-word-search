@@ -6,6 +6,7 @@ import Input
 import Puzzle
 import Common
 import HorizontalSearch
+import LetersLeft
 
 main :: IO ()
 main = do
@@ -20,3 +21,5 @@ main = do
   print newFlags4;
   let newFlags3 = mor newFlags newFlags2;
   print newFlags3;
+  let letersleft = letersLeft (mapData p) newFlags3;
+  print letersleft;
