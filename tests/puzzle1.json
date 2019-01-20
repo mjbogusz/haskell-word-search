@@ -1,8 +1,8 @@
 {
 	"sizeX": 12,
 	"sizeY": 16,
-	"words": 37,
-	"map": [
+	"wordsCount": 37,
+	"mapData": [
 		"julietcaress",
 		"weddingromeo",
 		"chocolatergf",
@@ -20,7 +20,7 @@
 		"scoupleoysne",
 		"cupidpresent"
 	],
-	"wordsList": [
+	"wordList": [
 		"adorer",
 		"arrow",
 		"bouquet",
