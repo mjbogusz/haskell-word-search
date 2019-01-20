@@ -13,8 +13,8 @@ main = do
   p <- readInputFile (head args);
   let flags = prepareFlags (sizeX p) (sizeY p);
   let newFlags = horizontalSearch (wordList p) (mapData p) flags;
-  print newFlags;
+--  print newFlags;
   let newFlags2 = rotateRight (horizontalSearch (wordList p) (rotateLeft (mapData p)) (rotateLeft flags));
-  print newFlags2;
+--  print newFlags2;
   let newFlags3 = mor newFlags newFlags2;
   print newFlags3;
