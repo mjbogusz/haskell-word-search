@@ -1,5 +1,7 @@
 module Common where
 
+import Data.List
+
 ---
 
 mergeFlags :: [[Bool]] -> [[Bool]] -> [[Bool]]
@@ -31,3 +33,9 @@ prepareFlagsRow x xs =
   if (length xs) < x
     then prepareFlagsRow x (xs ++ [False])
     else xs
+
+rotateLeft :: [[a]] -> [[a]]
+rotateLeft = reverse . transpose
+
+rotateRight :: [[a]] -> [[a]]
+rotateRight = transpose . reverse
