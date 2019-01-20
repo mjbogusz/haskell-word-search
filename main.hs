@@ -16,5 +16,7 @@ main = do
 --  print newFlags;
   let newFlags2 = rotateRight (horizontalSearch (wordList p) (rotateLeft (mapData p)) (rotateLeft flags));
 --  print newFlags2;
+  let newFlags4 = diagonals (horizontalSearch (wordList p) (diagonals (mapData p)) (diagonals flags));
+  print newFlags4;
   let newFlags3 = mor newFlags newFlags2;
   print newFlags3;

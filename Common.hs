@@ -45,3 +45,12 @@ mand x y = zipWith (zipWith (&&)) x y
 
 mor :: [[Bool]] -> [[Bool]] -> [[Bool]]
 mor x y = zipWith (zipWith (||)) x y
+
+diagonals :: [[a]] -> [[a]]
+diagonals = tail . go [] where
+    -- it is critical for some applications that we start producing answers
+    -- before inspecting es_
+    go b es_ = [h | h:_ <- b] : case es_ of
+        []   -> transpose ts
+        e:es -> go (e:ts) es
+        where ts = [t | _:t <- b]
