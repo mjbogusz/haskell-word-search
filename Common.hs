@@ -34,29 +34,22 @@ prepareFlagsRow x xs =
     then prepareFlagsRow x (xs ++ [False])
     else xs
 
-rotateLeft :: [[a]] -> [[a]]
-rotateLeft = reverse . transpose
-
-rotateRight :: [[a]] -> [[a]]
-rotateRight = transpose . reverse
-
 mand :: [[Bool]] -> [[Bool]] -> [[Bool]]
 mand x y = zipWith (zipWith (&&)) x y
 
 mor :: [[Bool]] -> [[Bool]] -> [[Bool]]
 mor x y = zipWith (zipWith (||)) x y
 
-diagonals :: [[a]] -> [[a]]
-diagonals = tail . go [] where
-    -- it is critical for some applications that we start producing answers
-    -- before inspecting es_
-    go b es_ = [h | h:_ <- b] : case es_ of
-        []   -> transpose ts
-        e:es -> go (e:ts) es
-        where ts = [t | _:t <- b]
+printFlags :: [[Bool]] -> IO ()
+printFlags [] = do
+  return ()
+printFlags (t:ts) = do
+  print (map flags2char t)
+  printFlags ts
+  return ()
 
--- te diagonale w drugiej dolnej połowie powinny być poprzedzone miejscami pustymi, tak, zeby było wyrównnie do oryginalnej szerokości 
-diagonals2 = map concat
-          . transpose
-          . zipWith (\ns xs -> ns ++ map (:[]) xs)
-                    (iterate ([]:) [])
+flags2char :: Bool -> Char
+flags2char t =
+  if t
+  then 'X'
+  else ' '
